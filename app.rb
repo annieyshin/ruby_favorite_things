@@ -9,6 +9,11 @@ get('/') do
   erb(:list)
 end
 
+get('/') do
+  @deflist = Item.all()
+  erb(:item)
+end
+
 #sending information
 post('/') do
   name = params["name"]
@@ -18,8 +23,17 @@ post('/') do
   erb(:list)
 end
 
-#gets information from items page
-get('/items/:id') do
-  @item = Item.find(params[:id])
+#sending information
+post('/') do
+  definition = params["definition"]
+  defitem = Item.new(definition)
+  defitem.save()
+  @deflist = Item.all()
   erb(:item)
 end
+
+# #gets information from items page
+# get('/items/:id') do
+#   @item = Item.find(params[:id])
+#   erb(:item)
+# end

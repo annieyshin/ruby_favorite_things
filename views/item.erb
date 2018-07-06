@@ -1,1 +1,14 @@
 <h1><%= @item.name %></h1>
+<!-- does not need outside view to display!!!!  -->
+
+<% @deflist.each do |item| %>
+  <h4><a href="/items/<%= item.defid %>"><%= item.definition %></a></h4>
+<% end %>
+
+<form action="/" method="post">
+  <div class="form-group">
+    <label for="definition">ADDED definition FIELDS</label>
+    <input id="definition" name="definition" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Go!</button>
+</form>

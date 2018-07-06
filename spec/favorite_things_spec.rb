@@ -40,6 +40,17 @@ describe("Item") do
     end
   end
 
+  describe("#defid") do
+    it("increments an defid by 1 each time a new def is added") do
+      item = Item.new("means delicious food")
+      item.save()
+      item2 = Item.new("created as a food item in the USA")
+      item2.save()
+      expect(item.defid()).to(eq(1))
+      expect(item2.defid()).to(eq(2))
+    end
+  end
+
   describe(".find") do
     it("finds an item based on its id") do
       item = Item.new("tacos")
